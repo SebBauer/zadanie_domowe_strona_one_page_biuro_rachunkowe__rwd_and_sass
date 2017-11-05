@@ -1,0 +1,14 @@
+@mixin flex($flex, $justify_content) {
+    display: $flex;
+    justify-content: $justify_content;
+}
+
+@mixin medias($background_position_x, $background_position_y, $transition) {
+    background-position: $background_position_x, $background_position_y;
+    transition: $transition;
+}
+
+@mixin sizes($width, $height) {
+    width: $width;
+    height: $height;
+}

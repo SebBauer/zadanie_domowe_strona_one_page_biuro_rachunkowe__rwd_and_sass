@@ -1,0 +1,356 @@
+@import 'Reset';
+@import 'Mixins';
+@import 'Variables';
+@import 'Keyframes';
+@import 'Extend';
+
+* {
+    font-size: $base_font_size;
+    font-family: $font_family;
+    line-height: $base_line_height;
+}
+
+header {
+    top: 0;
+     
+        h1, h2 {       
+            font-size: 1.7rem;
+            letter-spacing: 0.3rem;
+            width: 90%;
+            margin: 4% 5%;
+            text-align: center;
+        }
+        
+        h1 {
+            border-bottom: 1px solid #d9d9d9;
+            padding-bottom: 1rem;    
+        }
+
+        h2 {
+            line-height: 1rem;
+            text-transform: uppercase;
+            padding-bottom: 1rem;
+        }
+            
+    
+}
+
+nav {
+    background-color: $main_color;
+    
+    ul {
+        width: 90%;
+        @extend %margin_center;
+        @include flex(flex, space-between);
+        
+        li {
+            list-style: none;
+            font-size: 0.8rem;
+            color: white;
+            padding: {
+                top: 8px;
+                bottom: 3px;
+                }
+                
+                i {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+}
+
+/* Hover na telefonach nie działa, ale można to zrobić inaczej, dlatego to dodałem */
+
+#sprites {
+    position: fixed;
+    @include flex(flex, center);
+    align-items: center;
+    @include sizes(200px, 60px);
+    z-index: 1;
+    border-radius: 5px;
+    background-color: rgba(240, 240, 240, 0.8);
+    margin-left: -143px;
+    margin-top: $base_size * 15;
+    transition: all 2s ease;
+
+    &:hover {
+        margin-left: 0;
+    }
+}
+
+.sprites {
+    background: url('images/sprites_spolecznosciowe.png');
+    @include sizes(42px, 43px);
+    margin-right: 2px;
+    border-radius: 4px;
+    display: inline-block;
+    }
+   
+@each $media_name in $sprites_media_name {
+    div.#{$media_name} {
+        background-position: $background_position_x $background_position_y;
+        transition: $transition;
+    }
+    
+    div.#{$media_name} {
+    &:hover {
+        background-position: $background_position_x -43px;
+        }
+}
+    
+$background_position_x: $background_position_x - 52px;
+$background_position_y: 0px;  
+
+}
+
+
+
+#slider {
+    
+    > div {
+        position: absolute;
+        opacity: 0;
+        @include sizes(100%, 50vh);
+        animation: animation 20s ease infinite;
+        margin-bottom: $base_size * 3.5;
+        
+    @each $img_name in $image_slider_name {
+        
+        &:nth-child(#{$img_number}) {
+        background: url('#{$img_path}#{$img_name}.jpeg') center/cover no-repeat;
+            @if $img_number == 4 {
+                position: relative;
+            }
+            @if $animatian_delay > 0{
+                animation-delay: $animatian_delay;
+            }
+        }
+            $img_number: $img_number + 1;
+            $animatian_delay: $animatian_delay + 5s;            
+    }
+}
+    
+    .slider_text_zone {
+        position: absolute;
+        @include flex (flex, center);
+        flex-direction: column;
+        @include sizes(23%, 50vh);
+        background-color: rgba(240, 240, 240, 0.7);
+        right: 15%;
+        
+        h3 {
+            font-size: 1.5rem;
+            padding: 0 $base_size $base_size $base_size;
+        }
+        
+        p {
+            padding: 0 10px;
+            text-align: justify;
+        }
+    }
+}
+
+#boxes_one, #boxes_two {
+    width: 80%;
+    @extend %margin_center;
+    border-bottom: 1px dotted $main_color;
+    overflow: hidden;
+}
+
+.box, .box_two {
+    @include flex(flex, center);
+    flex-direction: column;
+    align-items: center;
+    height: $base_size * 27;
+    background-color: #f7f7f7;
+    border-radius: $base_size;
+    margin: 0 auto $base_size * 4 auto;
+    
+    i {
+        font-size: $base_font_size * 6;
+        color: $main_color;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+        line-height: 4rem;
+    }
+    
+    p {
+        text-align: left;
+        padding: 10px;
+        text-align: justify;
+    }
+}
+
+#boxes_three {
+    @extend %margin_center;
+    text-align: center;
+    width: 80%;
+    padding-top: $base_size * 4;
+}
+
+footer {
+    margin-top: $base_size * 6;
+    @include sizes(100%, 100px);
+    background-color: #f7f7f7;
+    
+    div {
+        width: 80%;
+        @extend %margin_center;
+        
+            p {
+            display: inline-block;
+            @extend %margin_center; 
+            }
+        
+// Stylowanie dla alternatywnych ikon mediów społecznościowych
+//            i {
+//            padding-top: 2%;
+//            padding-right: 3%;
+//            float: right;
+//        }
+    }
+}
+
+@media (max-width:679px) {
+    
+    #boxes_one {
+        border-bottom: none;
+    }
+}
+        
+@media (max-width: 679px) {
+    
+        a {display: none;}        
+    }
+
+@media (min-width: 680px) {
+    
+    header {
+                h1, h2 {
+                    font-size: 2.5rem;
+                    width: $base_size * 40;
+                    margin: $base_size * 2.5 auto;
+                    text-align: left;
+                }
+            
+                h2 {
+                    line-height: .1rem;
+                    padding-bottom: 1rem;
+                }
+            
+    }
+        
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.8);
+        
+            ul{
+                width: 70%;
+                @include flex(flex, space-evenly);
+                
+                li{
+                    color: black;
+                    border-top: 1.5px dashed rgba(255, 255, 255, 0);
+                    transition: all 1.5s linear;
+                    padding: {
+                        top: 0.7rem;
+                        bottom: 1rem;
+                    }
+                    
+                        a {
+                            text-decoration: none;
+                            font-size: 1.4rem;
+                            color: black;
+                        }
+                    
+                        .material-icons {
+                            display: none;
+                        }
+                    
+                    &:hover {
+                    color: darkgrey;
+                    border-top: 1.5px dashed #864949;
+                    }
+                }
+            }
+        }
+}
+
+
+@media (min-width: 680px) and (max-width: 999px) {
+    
+    .box, .box_two {
+        float: left;
+        width: 48%;
+        margin: $margin_boxes_tablets;
+    }
+    
+    .box:last-child {
+        width: 98%;
+        margin: $margin_boxes_tablets;
+    }
+    
+    #boxes_two {
+        margin-top: 2%;
+    }
+    
+}
+
+//@media (min-width: 680px) and (max-width: 1200px) {
+//        nav {
+//            ul{
+//            width: 70%;
+//            position: sticky;
+//            }
+//    }
+//}
+
+@media (max-width: 900px) {
+    
+    #slider .slider_text_zone {
+        display: none;
+    }
+}
+
+@media (min-width: 1000px) {
+    nav {
+        
+        ul {
+            width: 50%;
+        }
+    }
+    
+    #boxes_one, {
+        @include flex(flex, center);
+        padding-bottom: $base_size * 4;
+        padding-top: 5px;
+        
+            .box{
+                width: 31%;
+                margin: 0 1%;
+            }
+    }
+    
+    #boxes_two {
+        @include flex(flex, center);
+        
+        .box_two {
+            width: 46%;
+            margin-top: $base_size * 4;
+        }
+    }
+        
+    .box:hover, .box_two:hover {
+        transition: all 0.5s ease;
+        box-shadow: 0px 0px 10px #864949;
+    }
+    
+    #boxes_three {
+        text-align: left;
+        padding-left: $base_size * 3;
+    }
+}

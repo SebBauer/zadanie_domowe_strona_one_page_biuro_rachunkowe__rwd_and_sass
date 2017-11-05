@@ -1,0 +1,266 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+@keyframes animation {
+  0% {
+    opacity: 0; }
+  13% {
+    opacity: 1; }
+  25% {
+    opacity: 1; }
+  37% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+nav ul, #boxes_one, #boxes_two, #boxes_three, footer div, footer div p {
+  margin: 0 auto; }
+
+* {
+  font-size: 12px;
+  font-family: "Quicksand", sans-serif;
+  line-height: 1.4rem; }
+
+header {
+  top: 0; }
+  header h1, header h2 {
+    font-size: 1.7rem;
+    letter-spacing: 0.3rem;
+    width: 90%;
+    margin: 4% 5%;
+    text-align: center; }
+  header h1 {
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: 1rem; }
+  header h2 {
+    line-height: 1rem;
+    text-transform: uppercase;
+    padding-bottom: 1rem; }
+
+nav {
+  background-color: #864949; }
+  nav ul {
+    width: 90%;
+    display: flex;
+    justify-content: space-between; }
+    nav ul li {
+      list-style: none;
+      font-size: 0.8rem;
+      color: white;
+      padding-top: 8px;
+      padding-bottom: 3px; }
+      nav ul li i {
+        font-size: 1.5rem; }
+
+/* Hover na telefonach nie działa, ale można to zrobić inaczej, dlatego to dodałem */
+#sprites {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 60px;
+  z-index: 1;
+  border-radius: 5px;
+  background-color: rgba(240, 240, 240, 0.8);
+  margin-left: -143px;
+  margin-top: 150px;
+  transition: all 2s ease; }
+  #sprites:hover {
+    margin-left: 0; }
+
+.sprites {
+  background: url("images/sprites_spolecznosciowe.png");
+  width: 42px;
+  height: 43px;
+  margin-right: 2px;
+  border-radius: 4px;
+  display: inline-block; }
+
+div.facebook {
+  background-position: 1px 0px;
+  transition: all 0.25s linear; }
+
+div.facebook:hover {
+  background-position: 1px -43px; }
+
+div.twitter {
+  background-position: -51px 0px;
+  transition: all 0.25s linear; }
+
+div.twitter:hover {
+  background-position: -51px -43px; }
+
+div.youtube {
+  background-position: -103px 0px;
+  transition: all 0.25s linear; }
+
+div.youtube:hover {
+  background-position: -103px -43px; }
+
+div.in {
+  background-position: -155px 0px;
+  transition: all 0.25s linear; }
+
+div.in:hover {
+  background-position: -155px -43px; }
+
+#slider > div {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 50vh;
+  animation: animation 20s ease infinite;
+  margin-bottom: 35px; }
+  #slider > div:nth-child(1) {
+    background: url("images/office.jpeg") center/cover no-repeat; }
+  #slider > div:nth-child(2) {
+    background: url("images/office_two.jpeg") center/cover no-repeat;
+    animation-delay: 5s; }
+  #slider > div:nth-child(3) {
+    background: url("images/office_three.jpeg") center/cover no-repeat;
+    animation-delay: 10s; }
+  #slider > div:nth-child(4) {
+    background: url("images/office_four.jpeg") center/cover no-repeat;
+    position: relative;
+    animation-delay: 15s; }
+#slider .slider_text_zone {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 23%;
+  height: 50vh;
+  background-color: rgba(240, 240, 240, 0.7);
+  right: 15%; }
+  #slider .slider_text_zone h3 {
+    font-size: 1.5rem;
+    padding: 0 10px 10px 10px; }
+  #slider .slider_text_zone p {
+    padding: 0 10px;
+    text-align: justify; }
+
+#boxes_one, #boxes_two {
+  width: 80%;
+  border-bottom: 1px dotted #864949;
+  overflow: hidden; }
+
+.box, .box_two {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 270px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  margin: 0 auto 40px auto; }
+  .box i, .box_two i {
+    font-size: 72px;
+    color: #864949; }
+  .box h2, .box_two h2 {
+    font-size: 2.5rem;
+    line-height: 4rem; }
+  .box p, .box_two p {
+    text-align: left;
+    padding: 10px;
+    text-align: justify; }
+
+#boxes_three {
+  text-align: center;
+  width: 80%;
+  padding-top: 40px; }
+
+footer {
+  margin-top: 60px;
+  width: 100%;
+  height: 100px;
+  background-color: #f7f7f7; }
+  footer div {
+    width: 80%; }
+    footer div p {
+      display: inline-block; }
+
+@media (max-width: 679px) {
+  #boxes_one {
+    border-bottom: none; } }
+@media (max-width: 679px) {
+  a {
+    display: none; } }
+@media (min-width: 680px) {
+  header h1, header h2 {
+    font-size: 2.5rem;
+    width: 400px;
+    margin: 25px auto;
+    text-align: left; }
+  header h2 {
+    line-height: .1rem;
+    padding-bottom: 1rem; }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8); }
+    nav ul {
+      width: 70%;
+      display: flex;
+      justify-content: space-evenly; }
+      nav ul li {
+        color: black;
+        border-top: 1.5px dashed rgba(255, 255, 255, 0);
+        transition: all 1.5s linear;
+        padding-top: 0.7rem;
+        padding-bottom: 1rem; }
+        nav ul li a {
+          text-decoration: none;
+          font-size: 1.4rem;
+          color: black; }
+        nav ul li .material-icons {
+          display: none; }
+        nav ul li:hover {
+          color: darkgrey;
+          border-top: 1.5px dashed #864949; } }
+@media (min-width: 680px) and (max-width: 999px) {
+  .box, .box_two {
+    float: left;
+    width: 48%;
+    margin: 0 1% 2% 1%; }
+
+  .box:last-child {
+    width: 98%;
+    margin: 0 1% 2% 1%; }
+
+  #boxes_two {
+    margin-top: 2%; } }
+@media (max-width: 900px) {
+  #slider .slider_text_zone {
+    display: none; } }
+@media (min-width: 1000px) {
+  nav ul {
+    width: 50%; }
+
+  #boxes_one {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+    padding-top: 5px; }
+    #boxes_one .box {
+      width: 31%;
+      margin: 0 1%; }
+
+  #boxes_two {
+    display: flex;
+    justify-content: center; }
+    #boxes_two .box_two {
+      width: 46%;
+      margin-top: 40px; }
+
+  .box:hover, .box_two:hover {
+    transition: all 0.5s ease;
+    box-shadow: 0px 0px 10px #864949; }
+
+  #boxes_three {
+    text-align: left;
+    padding-left: 30px; } }
